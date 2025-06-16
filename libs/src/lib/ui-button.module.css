@@ -1,0 +1,23 @@
+/*
+ * Replace this with your own classes
+ *
+ * e.g.
+ * .container {
+ * }
+*/
+
+.fancy-button {
+  background: linear-gradient(90deg, #ff8a00, #e52e71);
+  color: white;
+  border: none;
+  border-radius: 0px;
+  padding: 12px 32px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  box-shadow: 0 4px 14px rgba(229,46,113,0.2);
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+.fancy-button:hover {
+  transform: scale(1.05);
+}
