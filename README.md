@@ -205,5 +205,93 @@ nx build project2
 
 ---
 
+## 11. Projekt szerkezete és komponensek
+
+A monorepo szerkezete:
+
+```
+apps/
+  project1/
+    src/app/
+      local-button/
+        local-button.tsx      # Zöld színű, csak project1-ben használt gomb
+        local-button.module.css
+      page.tsx               # Főoldal, itt használjuk a közös és a lokális gombot
+  project2/
+    src/app/
+      local-button/
+        local-button.tsx      # Kék színű, csak project2-ben használt gomb
+        local-button.module.css
+      page.tsx               # Főoldal, itt használjuk a közös és a lokális gombot
+libs/
+  src/
+    lib/
+      ui-button.tsx          # Közös gomb komponens
+      ui-button.module.css
+    index.ts                 # Közös export
+```
+
+---
+
+## 12. Path alias beállítás
+
+A shared komponensek importálásához a következő alias van beállítva a `tsconfig.base.json`-ban:
+
+```json
+"paths": {
+  "@nx-exmaple/ui-button": ["libs/src/index.ts"]
+}
+```
+
+Így a közös gomb importálása:
+```tsx
+import { UiButton } from '@nx-exmaple/ui-button';
+```
+
+---
+
+## 13. Lokális gomb komponensek használata
+
+Mindkét projekt saját, eltérő színű lokális gombot használ a közös gomb mellett.
+
+### Project1 (zöld gomb):
+```tsx
+import { UiButton } from '@nx-exmaple/ui-button';
+import { LocalButton } from './local-button/local-button';
+
+export default function Index() {
+  return (
+    <div>
+      <UiButton text="Shared Button" />
+      <LocalButton text="Local Green Button" />
+    </div>
+  );
+}
+```
+
+### Project2 (kék gomb):
+```tsx
+import { UiButton } from '@nx-exmaple/ui-button';
+import { LocalButton } from './local-button/local-button';
+
+export default function Index() {
+  return (
+    <div>
+      <UiButton text="Shared Button" />
+      <LocalButton text="Local Blue Button" />
+    </div>
+  );
+}
+```
+
+---
+
+## 14. Fontos megjegyzések
+- A shared komponensekhez mindig a path alias-t használd!
+- A lokális gombok csak a saját projektjükben érhetők el, nem közösek.
+- A projekt1-ben zöld, a projekt2-ben kék a lokális gomb.
+
+---
+
 ## References
 - [Nx Getting Started](https://nx.dev/getting-started/installation) 
