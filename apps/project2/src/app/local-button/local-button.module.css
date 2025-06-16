@@ -1,0 +1,16 @@
+.local-button {
+  background: linear-gradient(90deg, #0000ff, #000080);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 32px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  box-shadow: 0 4px 14px rgba(0,0,128,0.2);
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.local-button:hover {
+  transform: scale(1.05);
+} 

@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "ui-button": ["libs/src/index.ts"]
+      "@nx-exmaple/ui-button": ["libs/src/index.ts"],
     }
   },
   "exclude": ["node_modules", "tmp"]
